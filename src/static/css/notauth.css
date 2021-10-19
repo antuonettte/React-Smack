@@ -1,0 +1,15 @@
+.auth{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: gray;
+    color: white;
+}
+
+@media screen and (min-width: 600px){
+    .auth{
+        margin-left: 160px !important;
+    }
+}

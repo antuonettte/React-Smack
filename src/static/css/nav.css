@@ -1,0 +1,14 @@
+.nav-link{
+    font-size: larger;
+}
+nav{
+
+    margin-left: 160px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .nav{
+        position: absolute;
+    }
+}
