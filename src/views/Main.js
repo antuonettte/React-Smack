@@ -6,28 +6,44 @@ import Profile from './Profile'
 import Settings from './Settings'
 import '../static/css/main.css'
 import { Home } from './Home'
+import { NotAuthenticated } from '../components/NotAuthenticated'
+import { useAuth } from '../context/AuthContext'
 
 export const Main = (props) => {
+
+    const { currentUser } = useAuth()
+
     return (
         <React.Fragment>
-            <header>
-                <Navbar />
-                <Sidebar />
-            </header>
+            {
+                !currentUser.loggedIn
+                    ?
+                    <NotAuthenticated />
+                    :
+                    <React.Fragment>
+                        <header>
+                            <Navbar />
+                            <Sidebar />
+                        </header>
 
-            <main>
+                        <main>
 
-            <Switch>
-                <Route exact path="/"   render={ () => <Home />}/> 
-                <Route path="/profile"  render={ () => <Profile />}/> 
-                <Route path="/settings" render={ () => <Settings />}/> 
-            </Switch>
+                            <Switch>
+                                <Route exact path="/" render={() => <Home />} />
+                                <Route path="/profile" render={() => <Profile />} />
+                                <Route path="/settings" render={() => <Settings />} />
+                            </Switch>
 
-            </main>
-            
-            
-            <footer
-            ></footer>
+                        </main>
+
+
+                        <footer></footer>
+                    </React.Fragment>
+
+
+
+
+            }
         </React.Fragment>
     )
 }

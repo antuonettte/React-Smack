@@ -7,6 +7,11 @@
     scrollbar-width: none;  /* Firefox */
 }
 
+.activeGroup{
+    /* border: 1px dotted blue; */
+    background-color: slateblue;
+}
+
 
 .content{
     margin-top:60px;
