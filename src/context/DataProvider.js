@@ -1,9 +1,6 @@
-import React, { useEffect, useState, createContext, useCallback, useRef } from 'react';
+import React, { useEffect, useState, createContext, useCallback } from 'react';
 import firebase from '../firebase';
 import { useAuth } from './AuthContext';
-
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 export const DataContext = createContext();
 
@@ -15,7 +12,7 @@ export const DataProvider = ( props ) => {
     
     const [groups, setGroups] = useState([])
 
-    const [currentGroup, setCurrentGroup] = useState('Group1')
+    const [currentGroup, setCurrentGroup] = useState('Global')
 
     const { currentUser } = useAuth();
     const db = firebase.firestore();
@@ -29,18 +26,19 @@ export const DataProvider = ( props ) => {
                 console.log('There was an error sending your message');
                 console.log( err )
             } )
-    }, [currentGroup]) 
+    }, [currentGroup, db]) 
 // adds a firebase listener to the messages collection via onSnapshot()
 // sets the listener to the unsubscribe keyword
 
-    // const addGroup = (groupData) => {
-    //     db.collection('Groups')
-    // }
+    const createGroup = (groupData) => {
+        db.collection('Groups').doc(groupData.name).set({name: groupData.name});
+        db.collection('Users').doc(currentUser.id).collection('Groups').doc(groupData.name).set({name: groupData.name})
+    }
 
 
     const getGroups = useCallback(() => {
             var newGroups = [];
-            db.collection('Groups').orderBy('dateCreated','asc').get()
+            db.collection('Users').doc(currentUser.id).collection('Groups').get()
                 .then( (snapshot) => {
                     snapshot.forEach( group => {
                         newGroups.push({...group.data(), id: group.id})
@@ -50,15 +48,16 @@ export const DataProvider = ( props ) => {
                 .catch( err => {
                     console.log(err)
                 })
+                // console.log(groups)
+                
+    }, [db, currentUser]);
 
-    }, [db]);
-
-    //used to 
+    // adds a firebase listener to the messages collection via onSnapshot()
+    // sets the listener to the unsubscribe keyword
     useEffect(() => {
         let newMessages = []
-        console.log(currentGroup)
-
-        const unsubscribe = db.collection( 'Groups' ).doc(currentGroup).collection('Messages').orderBy('dateCreated','asc').onSnapshot((snapshot) => {
+        // collection( 'Users' ).doc(currentUser.id) V
+        const unsubscribe = db.collection('Groups').doc(currentGroup).collection('Messages').orderBy('dateCreated','asc').onSnapshot((snapshot) => {
             newMessages = snapshot.docs.map(m =>({
                 id: m.id,
                 ...m.data()
@@ -79,7 +78,7 @@ export const DataProvider = ( props ) => {
 
     
     return(
-        <DataContext.Provider value = {{providerInfo: [messages, setMessages, groups],setCurrentGroup, currentGroup , addMessage, getGroups}} >
+        <DataContext.Provider value = {{providerInfo: [messages, setMessages, groups], setCurrentGroup, currentGroup, addMessage, getGroups, createGroup}} key={'key'}>
             { props.children }
         </DataContext.Provider>
     )

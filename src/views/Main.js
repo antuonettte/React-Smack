@@ -29,7 +29,7 @@ export const Main = (props) => {
                         <main>
 
                             <Switch>
-                                <Route exact path="/" render={() => <Home />} />
+                                <Route exact path="/" render={() => <Home key="home"/>} />
                                 <Route path="/profile" render={() => <Profile />} />
                                 <Route path="/settings" render={() => <Settings />} />
                             </Switch>

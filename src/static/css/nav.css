@@ -1,14 +1,12 @@
-.nav-link{
-    font-size: larger;
-}
+
 nav{
-
-    margin-left: 160px;
+    background-color: rgb(151, 24, 56) !important;
 }
 
 
-@media screen and (max-width: 800px) {
-    .nav{
-        position: absolute;
+@media screen and (min-width: 600px) {
+    nav{
+        height: 40px;
+        margin-left: 160px;
     }
 }

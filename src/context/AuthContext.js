@@ -15,24 +15,45 @@ export const AuthProvider = ({children}) =>{
 
     var auth = new firebase.auth.GoogleAuthProvider();
 
+    const db = firebase.firestore();
+
     function signIn(){
         return firebase.auth().setPersistence( firebase.auth.Auth.Persistence.LOCAL )
             .then(() => {
                 firebase.auth().signInWithPopup(auth)
                     .then((res) => {
-                        var credential = res.credential;
+                        // var credential = res.credential;
 
-                        var token = credential.accessToken;
+                        // var token = credential.accessToken;
 
-                        var user = res.user;
+                        var u = res.user;
+                        setCurrentUser({
+                            id: u.uid,
+                            name: u.displayName,
+                            image: u.photoURL,
+                            email: u.email,
+                            loggedIn: true
+                        });
+                        
+                        db.collection('Users').doc(u.uid).set({
+                            id: u.uid,
+                            name: u.displayName,
+                            image: u.photoURL,
+                            email: u.email,
+                        });
+
+                    
                     })
                     .catch((err) => {
                         var errorCode = err.code;
                         var errorMessage = err.message;
 
-                        var email = err.email;
-
-                        var credential = err.credential;
+                        console.log(errorCode);
+                        console.log(errorMessage);
+                        
+                        // var email = err.email;
+                        
+                        // var credential = err.credential;
                     });
             })
     }
@@ -57,6 +78,14 @@ export const AuthProvider = ({children}) =>{
                     email: u.email,
                     loggedIn: true
                 });
+
+                db.collection('Users').doc(u.uid).set({
+                    id: u.uid,
+                    name: u.displayName,
+                    image: u.photoURL,
+                    email: u.email
+                });
+
             }else{
                 setCurrentUser({
                     loggedIn: false
@@ -66,7 +95,7 @@ export const AuthProvider = ({children}) =>{
 
         return subscribe;
 
-    },[] );
+    }, []);
 
     const value = {
         currentUser, signIn, signOut

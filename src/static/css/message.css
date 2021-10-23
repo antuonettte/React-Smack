@@ -2,10 +2,28 @@
 .chat-messame-right{
     display: flex;
     flex-shrink: 0;
+    height: 100px;
+}
+
+.test{
+    background-color: slateblue;
 }
 
 .chat-message-left{
     margin-right: auto;
+}
+
+.rounded{
+    border-radius: 50% !important;
+}
+
+.sortaRounded{
+    border-radius: 10px !important;
+}
+
+.time{
+    margin-left:10px !important;
+    font-size: 10px; 
 }
 
 .name{
@@ -21,9 +39,3 @@
     flex-grow: 0 !important;
 }
 
-.chat-messages{
-    display: flex;
-    flex-direction: column;
-    max-height: 800px;
-    overflow-y: scroll;
-}
