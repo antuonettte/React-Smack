@@ -1,0 +1,13 @@
+[debug] [2021-10-24T19:59:31.382Z] ----------------------------------------------------------------------
+[debug] [2021-10-24T19:59:31.384Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\tonyt\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2021-10-24T19:59:31.384Z] CLI Version:   9.21.0
+[debug] [2021-10-24T19:59:31.384Z] Platform:      win32
+[debug] [2021-10-24T19:59:31.384Z] Node Version:  v15.9.0
+[debug] [2021-10-24T19:59:31.385Z] Time:          Sun Oct 24 2021 15:59:31 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-24T19:59:31.385Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-24T19:59:31.433Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-24T19:59:31.433Z] > authorizing via signed-in user (tonyturner1399@gmail.com)
+[debug] [2021-10-24T19:59:31.433Z] [iam] checking project smack-f611d for permissions ["firebase.projects.get"]
+[debug] [2021-10-24T19:59:31.435Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/smack-f611d:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}

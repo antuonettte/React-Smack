@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createContext, useCallback } from 'react';
 import firebase from '../firebase';
 import { useAuth } from './AuthContext';
+import { scroll } from '../views/Home.js'
 
 export const DataContext = createContext();
 
@@ -63,8 +64,9 @@ export const DataProvider = ( props ) => {
                 ...m.data()
             }))
             setMessages(newMessages)
-
         });
+
+        
 
         return () => unsubscribe()
     }, [currentGroup])

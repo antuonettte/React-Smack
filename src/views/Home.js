@@ -1,10 +1,13 @@
-import React, { useContext, } from 'react'
+import React, { useContext, useEffect, } from 'react'
 import { Message } from '../components/Message'
 import '../static/css/home.css'
 import { DataContext } from '../context/DataProvider'
 import { useAuth } from '../context/AuthContext'
 import firebase from '../firebase'
-// import { NotAuthenticated } from '../components/NotAuthenticated'
+import '../context/DataProvider'
+
+
+
 
 export const Home = (props) => {
 
@@ -29,14 +32,21 @@ export const Home = (props) => {
         addMessage(formData);
     }
 
+    var messagesEnd;
+
+    useEffect(() => {
+        document.querySelector('#messagesEnd').scrollIntoView({behavior: 'smooth'})
+    }, [providerInfo[0]])
+
 
     return (
         <React.Fragment>
             {/* <div className=""> */}
-                <div className="content">
+                <div id="content" className="content">
 
                     {providerInfo[0].map((m) => <Message m={m} key={m.userId} />)}
 
+                    <div id="messagesEnd" ref={(el) => {messagesEnd = el;}}></div>
                 </div>
                 <div className="message-box">
                     <form onSubmit={(e) => handleSubmit(e)} className="input-form">
