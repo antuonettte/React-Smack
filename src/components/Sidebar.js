@@ -3,7 +3,6 @@ import '../static/css/sidenav.css'
 import { DataContext } from '../context/DataProvider'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
-import $ from 'jquery'
 
 
 
@@ -56,6 +55,7 @@ export const Sidebar = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
 
 
