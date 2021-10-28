@@ -42,6 +42,10 @@ export const AuthProvider = ({children}) =>{
                             email: u.email,
                         });
 
+                        db.collection('Users').doc(u.uid).collection('Groups').doc('Global').set({
+                            name: 'Global'
+                        })
+
                     
                     })
                     .catch((err) => {

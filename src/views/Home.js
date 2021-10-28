@@ -17,7 +17,7 @@ export const Home = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(providerInfo[0]);
+        // console.log(providerInfo[0]);
         const formData = {
             group: currentGroup,
             data: {
@@ -41,7 +41,7 @@ export const Home = (props) => {
 
     return (
         <React.Fragment>
-            {/* <div className=""> */}
+            <div className="body">
                 <div id="content" className="content">
 
                     {providerInfo[0].map((m) => <Message m={m} key={m.userId} />)}
@@ -54,7 +54,7 @@ export const Home = (props) => {
                         <button type="submit" className="submit"><i className="bi bi-arrow-up"></i></button>
                     </form>
                 </div>
-            {/* </div> */}
+            </div>
         </React.Fragment>
     )
 }

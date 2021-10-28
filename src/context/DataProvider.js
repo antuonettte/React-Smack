@@ -8,7 +8,7 @@ export const DataContext = createContext();
 export const DataProvider = ( props ) => {
 
     const [messages, setMessages] = useState([]); //passing in a direct value like an empty array, it will reset that array
-    // every time the dataprovider component is ran, if the array was a complext algorithm or math, it could hurt the performace of my app
+    // every time the data     provider component is ran, if the array was a complext algorithm or math, it could hurt the performace of my app
     // use state can also accept an arrow function which will only run on the first initial render of our component.
     
     const [groups, setGroups] = useState([])
@@ -33,7 +33,8 @@ export const DataProvider = ( props ) => {
 
     const createGroup = (groupData) => {
         db.collection('Groups').doc(groupData.name).set({name: groupData.name});
-        db.collection('Users').doc(currentUser.id).collection('Groups').doc(groupData.name).set({name: groupData.name})
+        db.collection('Users').doc(currentUser.id).collection('Groups').doc(groupData.name).set({name: groupData.name});
+        setCurrentGroup(groupData.name);
     }
 
 
@@ -51,7 +52,7 @@ export const DataProvider = ( props ) => {
                 })
                 // console.log(groups)
                 
-    }, [db, currentUser]);
+    }, [db, currentUser, currentGroup]);
 
     // adds a firebase listener to the messages collection via onSnapshot()
     // sets the listener to the unsubscribe keyword

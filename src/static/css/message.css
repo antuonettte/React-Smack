@@ -10,6 +10,7 @@
 }
 
 .chat-message-left{
+    flex-direction: row;
     margin-right: auto;
 }
 
@@ -20,6 +21,7 @@
 .sortaRounded{
     border-radius: 10px !important;
 }
+
 
 .time{
     margin-left:10px !important;

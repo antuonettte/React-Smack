@@ -1,6 +1,10 @@
 
 nav{
-    background-color: rgb(151, 24, 56) !important;
+    background-color: #00203fff !important;
+}
+
+.nav-link{
+    color: white;
 }
 
 

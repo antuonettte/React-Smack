@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react'
-import '../static/css/sidenav.css'
-import { DataContext } from '../context/DataProvider'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap'
+import $ from 'jquery';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import React, { useContext, useState } from 'react';
+import '../static/css/sidenav.css';
+import { DataContext } from '../context/DataProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -14,6 +15,7 @@ export const Sidebar = () => {
     const handleClick = (e) => {
         var groupName = e.target.value;
         setCurrentGroup(groupName)
+        providerInfo[1]([])
     }
 
     const handleCreate = (e) => {
@@ -22,6 +24,7 @@ export const Sidebar = () => {
             name: e.target.name.value
         }
         createGroup(formData)
+        $("#staticBackdrop").modal('hide');
     }
 
 
@@ -78,7 +81,7 @@ export const Sidebar = () => {
                                     <input name="private" type="checkbox" className="form-check-input shadow-none" id="exampleCheck1"/>
                                     <label className="form-check-label" for="exampleCheck1">Private Group</label>
                                 </div>
-                                <button type="submit" className="btn btn-primary my-3 shadow-none">Create Group</button>
+                                <button type="submit" className="btn btn-primary my-3 shadow-none mx-auto">Create Group</button>
                             </form>
                         </div>
                         {/* <div className="modal-footer">
