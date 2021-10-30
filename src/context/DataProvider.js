@@ -1,7 +1,6 @@
 import React, { useEffect, useState, createContext, useCallback } from 'react';
 import firebase from '../firebase';
 import { useAuth } from './AuthContext';
-import { scroll } from '../views/Home.js'
 
 export const DataContext = createContext();
 
@@ -28,8 +27,6 @@ export const DataProvider = ( props ) => {
                 console.log( err )
             } )
     }, [currentGroup, db]) 
-// adds a firebase listener to the messages collection via onSnapshot()
-// sets the listener to the unsubscribe keyword
 
     const createGroup = (groupData) => {
         db.collection('Groups').doc(groupData.name).set({name: groupData.name});

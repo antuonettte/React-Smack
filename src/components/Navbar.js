@@ -38,7 +38,7 @@ export const Navbar = () => {
         <React.Fragment>
 
             <nav className="navbar fixed-top navbar-expand-sm navbar-dark">
-                {/* <Link to="/"><img className="navbar-brand " height="30px" alt="Smack Logo" src={logo} /></Link> */}
+                <p className="groupName">{currentGroup}</p>
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

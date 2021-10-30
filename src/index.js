@@ -8,6 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider } from './context/DataProvider';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

@@ -14,7 +14,6 @@ export const AuthProvider = ({children}) =>{
     const [currentUser, setCurrentUser] = useState({loggedIn: false})
 
     var auth = new firebase.auth.GoogleAuthProvider();
-
     const db = firebase.firestore();
 
     function signIn(){
