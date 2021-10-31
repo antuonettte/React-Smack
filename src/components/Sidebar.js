@@ -81,7 +81,7 @@ export const Sidebar = () => {
                             <input name="name" type="text" className="form-control mb-3 shadow-none" id="groupName" />
                         </div>
                         <div className="form-group form-check">
-                            <input name="private" type="checkbox" className="form-check-input shadow-none" id="exampleCheck1" />
+                            {/* <input name="private" type="checkbox" className="form-check-input shadow-none" id="exampleCheck1" /> */}
                             {/* <label className="form-check-label" for="exampleCheck1">Private Group</label> */}
                         </div>
                         <button type="submit" onClick={handleClose} className="btn btn-primary my-3 shadow-none mx-auto">Create Group</button>

@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap');
+
 .auth {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
     background-color: gray;
     color: white;
+    text-align: center;
     overflow: hidden;
+    font-family: 'Pt Sans', sans-serif;
 }
 
 .center {
