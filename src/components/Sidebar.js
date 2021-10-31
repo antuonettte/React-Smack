@@ -31,6 +31,10 @@ export const Sidebar = () => {
 
     }
 
+    // const handleAddGroup = () => {
+        
+    // }
+
 
     return (
         <React.Fragment>
@@ -50,12 +54,12 @@ export const Sidebar = () => {
                                 <hr style={{ color: 'white', }} />
                                 <div className="groups">
                                     {providerInfo[2].map(g => {
-                                        return <button className={`btn  shadow-none text-white w-100 ${(g.id === currentGroup) ? 'activeGroup' : null}`} onClick={(e) => handleClick(e)} value={g.id}>{g.name}</button>
+                                        return <button className={`btn shadow-none w-100 ${(g.id === currentGroup) ? 'activeGroup' : ''}`} onClick={(e) => handleClick(e)} value={g.id}>{g.name}</button>
                                     })}
                                 </div>
                                 <hr style={{ color: 'white', }} />
                                 <button className="btn w-100 text-white shadow-none" onClick={handleShow}>Create Group</button>
-                                <button className="btn w-100 text-white shadow-none text-nowrap">Add Group</button>
+                                {/* <button className="btn w-100 text-white shadow-none text-nowrap" onClick={handleAddGroup}>Add Group</button> */}
 
 
                             </div>
@@ -78,7 +82,7 @@ export const Sidebar = () => {
                         </div>
                         <div className="form-group form-check">
                             <input name="private" type="checkbox" className="form-check-input shadow-none" id="exampleCheck1" />
-                            <label className="form-check-label" for="exampleCheck1">Private Group</label>
+                            {/* <label className="form-check-label" for="exampleCheck1">Private Group</label> */}
                         </div>
                         <button type="submit" onClick={handleClose} className="btn btn-primary my-3 shadow-none mx-auto">Create Group</button>
                     </form>

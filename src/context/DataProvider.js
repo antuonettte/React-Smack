@@ -24,7 +24,10 @@ export const DataProvider = ( props ) => {
             })
             .catch( err => {
                 console.log('There was an error sending your message');
-                console.log( err )
+                // console.log( err.message )
+                if (err.message == 'Missing or insufficient permissions.'){
+                    alert('You are Permentally Banned');
+                }
             } )
     }, [currentGroup, db]) 
 
@@ -45,7 +48,7 @@ export const DataProvider = ( props ) => {
                     setGroups(newGroups);
                 })
                 .catch( err => {
-                    console.log(err)
+                    console.log((err.message == 'Missing or insufficient permissions.') ? 'You\'re Banned sir' : err.message )
                 })
                 // console.log(groups)
                 
