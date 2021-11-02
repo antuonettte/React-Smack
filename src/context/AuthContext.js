@@ -16,6 +16,47 @@ export const AuthProvider = ({children}) =>{
     var auth = new firebase.auth.GoogleAuthProvider();
     const db = firebase.firestore();
 
+    var fbProvider = new firebase.auth.FacebookAuthProvider();
+
+    function signInWithFb(){
+        return firebase.auth().setPersistence( firebase.auth.Auth.Persistence.LOCAL )
+            .then(() => {
+                firebase.auth().signInWithPopup( fbProvider )
+                    .then(res => {
+                        var u = res.user
+                        console.log(u)
+
+                        setCurrentUser({
+                            id: u.uid,
+                            name: u.displayName,
+                            image: u.photoURL,
+                            email: u.email,
+                            loggedIn: true
+                        });
+                        // Finish Fixing the user photo url issure. 
+                        db.collection('Users').doc(u.uid).set({
+                            id: u.uid,
+                            name: u.displayName,
+                            image: u.photoURL,
+                            email: u.email,
+                        });
+
+                        
+                    })
+                    .catch((err) => {
+                        // var errorCode = err.code;
+                        // var errorMessage = err.message;
+
+                        // console.log(errorCode);
+                        // console.log(errorMessage);
+                        
+                        // var email = err.email;
+                        
+                        // var credential = err.credential;
+                    });
+            })
+    }
+
     function signIn(){
         return firebase.auth().setPersistence( firebase.auth.Auth.Persistence.LOCAL )
             .then(() => {
@@ -101,7 +142,7 @@ export const AuthProvider = ({children}) =>{
     }, []);
 
     const value = {
-        currentUser, signIn, signOut
+        currentUser, signIn, signOut, signInWithFb
     }
 
     return(

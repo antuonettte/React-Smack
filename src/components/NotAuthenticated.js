@@ -4,19 +4,20 @@ import { useAuth } from '../context/AuthContext'
 
 export const NotAuthenticated = () => {
 
-    const { signIn } = useAuth()
+    const { signIn, signInWithFb } = useAuth()
 
     return (
         <React.Fragment>
             <div className="auth">
-                <div className="center">
-                    <h1>Welcome to my Chat Application. This is a display of my skills <br /> 
-                        and what I can do. This app is built fully using React and Firebase. It has database rules and is <br />
-                        fully scallable.
-                    </h1>
-                    <h1 className="">Please Sign In to see the application.</h1>
-                    <button className="w-100 btn btn-primary" onClick={signIn} >Sign In</button>
-                </div>
+               <div className="container-fluid">
+                   <div className="row">
+                       <div className="col">
+                           <h1 className="mt-5">Please Sign Into Smack</h1>
+                           <button className="btn bg-white mt-5" onClick={signIn}><i className="bi bi-google"></i> Sign in using Google</button>
+                           <button className="btn bg-white mt-5" onClick={signInWithFb}><i className="bi bi-facebook"></i> Continue with FaceBook</button>
+                       </div>
+                   </div>
+               </div>
             </div>
         </React.Fragment>
     )

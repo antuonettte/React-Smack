@@ -6,22 +6,10 @@
     bottom:0;
     left:0;
     right:0;
-    background-color: gray;
+    background-color: #00203fff;
     color: white;
     text-align: center;
     overflow: hidden;
     font-family: 'Pt Sans', sans-serif;
 }
 
-.center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-* {
-    overflow: hidden;
-}
